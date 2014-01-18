@@ -1,6 +1,8 @@
 syntax on
-set background=light
+set background=dark
 filetype plugin indent on
+
+set ruler
 
 set expandtab           " enter spaces when tab is pressed
 set textwidth=120       " break lines when line length increases
