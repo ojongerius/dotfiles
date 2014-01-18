@@ -1,5 +1,3 @@
-call pathogen#infect()
-
 syntax on
 set background=light
 filetype plugin indent on
@@ -14,10 +12,11 @@ set autoindent          " copy indent from current line when starting a new line
 " make backspaces more powerfull
 set backspace=indent,eol,start
 
-"" Begin stuff from https://github.com/mbrochh/vim-as-a-python-ide/blob/master/.vimrc
-
+" Reload file on save, if it's vim.rc
 autocmd! bufwritepost .vimrc source %
-" Mouse and backspace
+
+" Mouse and backspace -this is awesome but also messes with copy and paste
+" behavior.
 " set mouse=a  " on OSX press ALT and click
 " set bs=2     " make backspace behave like normal again
 
@@ -34,12 +33,6 @@ map <c-h> <c-w>h
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-" au InsertLeave * match ExtraWhitespace /\s\+$/
-
 " Showing line numbers and length
 " set number  " show line numbers
 set tw=79   " width of document (used by gd)
@@ -54,50 +47,15 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-set laststatus=2
-set ruler
-set showcmd
-
-"" End stuff from https://github.com/mbrochh/vim-as-a-python-ide/blob/master/.vimrc
-
+" Call the amazing pathogen
 execute pathogen#infect()
 
-" let g:Powerline_symbols = 'compatible'
-" let g:Powerline_symbols = 'fancy'
-" let g:Powerline_colorscheme = 'solarized256'
-" set fillchars+=stl:\ ,stlnc:\
-
-
-" Settings for jedi-vim
-" cd ~/.vim/bundle
-" git clone git://github.com/davidhalter/jedi-vim.git
-" let g:jedi#related_names_command = "<leader>z"
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#popup_select_first = 0
-" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
-
-
-" Better navigating through omnicomplete option list
-" See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-" set completeopt=longest,menuone
-" function! OmniPopup(action)
-"    if pumvisible()
-"        if a:action == 'j'
-"            return "\<C-N>"
-"        elseif a:action == 'k'
-"            return "\<C-P>"
-"        endif
-"    endif
-"    return a:action
-"endfunction
-
+" Allow switching through split windows by adding ctrl to nav keys
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
+" Syntastic things, I prefer pyflakes, and running a check on startup just i
+" case.
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_python_checkers=['pyflakes']
-"let g:syntastic_python_checker="flake8"
