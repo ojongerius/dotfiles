@@ -40,10 +40,10 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 " Resizing of panes (Shift+<movement>-)
-nnoremap <S-j> :resize +5<cr>
-nnoremap <S-k> :resize -5<cr>
-nnoremap <S-h> :vertical resize -5<cr>
-nnoremap <S-l> :vertical resize +5<cr>
+nnoremap <C-S-j> :resize +5<cr>
+nnoremap <C-S-k> :resize -5<cr>
+nnoremap <C-S-h> :vertical resize -5<cr>
+nnoremap <C-S-l> :vertical resize +5<cr>
 
 " easier moving of code blocks
 vnoremap < <gv  " better indentation
