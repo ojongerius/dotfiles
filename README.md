@@ -6,7 +6,7 @@ https://dotfiles.github.io
 
 ## Dotfiles
 
-Create symlinks to these dotfiles by running ```create_symlinks.py```. Existing files will be renamed as with ```.orig``` as suffix.
+Create symlinks to these dotfiles by running ```create_symlinks.py```. Existing files will be renamed with ```.orig``` as suffix.
 
 ```bash
 scripts/create_symlinks.py
