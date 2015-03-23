@@ -2,7 +2,7 @@
 
 These dotfiles should (but do not yet) install/setup:
 * Vim plugins: pathogen, syntastic, jedi-vim, nerdtree, vim-flake8,
-  vim-colors-solarized
+  vim-colors-solarized vim-tmux-navigator.git
 * Shell: ohmyzsh (and customize)
 * Install and alias autojump, virtualenvwrapper
 * Configure Git
