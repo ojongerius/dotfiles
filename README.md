@@ -6,22 +6,26 @@ https://dotfiles.github.io
 
 ## Dotfiles
 
-Create symlinks to these dotfiles by running create_symlinks.py. Existing files will be renamed as with ```.orig``` as suffix.
+Create symlinks to these dotfiles by running ```create_symlinks.py```. Existing files will be renamed as with ```.orig``` as suffix.
 
-``scripts/create_symlinks.py``
+```bash
+scripts/create_symlinks.py
+```
 
 ## OSX
 
 Run a whole bunch of OSX customisations. Taken from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles) 
 with some customisations.
 
-``scripts/osx.sh``
+```bash
+scripts/osx.sh
+```
 
-## Thanks
+## Thanks!
 
-*  [@mathiasbynens](https://github.com/mathiasbynens/dotfiles)
-*  [@skwp](https://github.com/skwp/dotfiles)
-*  [@holman](https://github.com/holman/dotfiles)
+*  [Mathias Bynens](https://mathiasbynens.be/) and his fantastic [dotfiles](https://github.com/mathiasbynens/dotfiles).
+*  [Yan Pritzker](http://yanpritzker.com/) and his amazing [dotfiles](https://github.com/skwp/dotfiles).
+*  [Zach Holman](http://zachholman.com/) and his inspiring [dotfiles](https://github.com/holman/dotfiles)
 
 ## Extras
 
