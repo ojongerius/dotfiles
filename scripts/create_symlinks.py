@@ -21,6 +21,9 @@ def __create_links(source, destination):
             __symlink(source, destination)
         except OSError as e:
             if e.errno == errno.EEXIST:
+                if os.path.islink(destination) and os.path.realpath(source) == os.path.realpath(destination):
+                    print 'INFO: NOOP: %s LGTM.' % destination
+                    return
                 __backup(destination)
                 __symlink(source, destination)
             else:
