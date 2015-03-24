@@ -30,7 +30,7 @@ scripts/osx.sh
 ## Extras
 
 Another nice one from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles)):
-Put things that do not belong in a public repository in a ```~.extra``` and let
+Put things that do not belong in a public repository in a ```~/.extra``` and let
 ```zsh/.zshrc``` source it for you.
 
 ## Todo
