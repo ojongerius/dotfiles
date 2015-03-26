@@ -86,3 +86,7 @@ map <C-n> :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
 let NERDTreeShowHidden=1         " Show dotfiles
 let NERDTreeShowBookmarks=1      " Show bookmarks on startup
+
+" Airline config, enable powerline fonts
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
