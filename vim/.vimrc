@@ -1,38 +1,35 @@
+" Presentation
+"
 syntax on
 set background=dark
+highlight ColorColumn ctermbg=233
+set colorcolumn=80                    " try to behave
+set number                            " show line numbers
+set ruler                             " Set a ruler
+" set nowrap                          " don't automatically wrap on load
+set fo-=t                             " don't automatically wrap text when typing
 
-" Pathogen
-execute pathogen#infect()
+" Misc
+"
+autocmd! bufwritepost .vimrc source % " Reload .vim.rc on save
 
-let mapleader=","       " set this to be the leader key
-syntax enable           " enable syntax highlighting
-
-" Solarized
-let g:solarized_termcolors=16
-let g:solarized_termtrans=1
-colorscheme solarized   " needs to be set after configuration above
-
-set ruler               " Set a ruler
-filetype plugin indent on " Sane indentation
-
+" Formatting
+"
 " Do tabs correctly
-set expandtab             " enter spaces when tab is pressed
-set textwidth=80          " break lines when line length increases
-set tabstop=4             " use 4 spaces to represent tab
+set expandtab                         " enter spaces when tab is pressed
+set textwidth=80                      " break lines when line length increases
+set tabstop=4                         " use 4 spaces to represent tab
 set softtabstop=4
-set shiftwidth=4          " number of spaces to use for auto indent
+set shiftwidth=4                      " number of spaces to use for auto indent
 
-set autoindent            " copy indent from current line when starting a new line
+set autoindent                        " copy indent from current line
+set backspace=indent,eol,start        " make backspaces more powerfull
+set laststatus=2                      " Always show status line
+filetype plugin indent on             " Sane indentation
 
-set backspace=indent,eol,start " make backspaces more powerfull
-
-autocmd! bufwritepost .vimrc source % " Reload file on save, if it's vim.rc
-
-" Mouse and backspace -this is awesome but also messes with copy and paste
-" behavior.
-" set mouse=a  " on OSX press ALT and click
-" set bs=2     " make backspace behave like normal again
-
+" Navigation
+"
+let mapleader=","                     " set this to be the leader key
 " Navigate between panes (Ctrl+<movement>)
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -49,11 +46,9 @@ nnoremap <C-S-l> :vertical resize +5<cr>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-set number  " show line numbers
-" set nowrap  " don't automatically wrap on load
-set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80 " try to behave
-highlight ColorColumn ctermbg=233
+" Allow switching through split windows by adding ctrl to nav keys
+inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 " Make search case insensitive
 set hlsearch
@@ -61,9 +56,20 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Allow switching through split windows by adding ctrl to nav keys
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+" Mouse and backspace -this is awesome but also messes with copy and paste
+" behavior.
+" set mouse=a                         " on OSX press ALT and click
+" set bs=2                            " make backspace behave like normal again
+
+" Plugins
+"
+" Pathogen
+execute pathogen#infect()
+
+" Solarized
+let g:solarized_termcolors=16
+let g:solarized_termtrans=1
+colorscheme solarized                 " needs to be set after configuration above
 
 " Syntastic for syntax checking
 let g:syntastic_always_populate_loc_list=1
@@ -84,9 +90,9 @@ let g:jedi#use_splits_not_buffers = "top"
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
-let NERDTreeShowHidden=1         " Show dotfiles
-let NERDTreeShowBookmarks=1      " Show bookmarks on startup
+let NERDTreeShowHidden=1              " Show dotfiles
+let NERDTreeShowBookmarks=1           " Show bookmarks on startup
 
 " Airline config, enable powerline fonts
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_powerline_fonts = 2
