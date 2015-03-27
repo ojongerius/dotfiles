@@ -4,7 +4,7 @@ syntax on
 set background=dark
 highlight ColorColumn ctermbg=233
 set colorcolumn=80                    " try to behave
-set number                            " show line numbers
+" set nonumber                        " show line numbers -no need with statusbar
 set ruler                             " Set a ruler
 " set nowrap                          " don't automatically wrap on load
 set fo-=t                             " don't automatically wrap text when typing
