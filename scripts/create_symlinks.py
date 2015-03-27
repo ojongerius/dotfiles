@@ -4,6 +4,16 @@ import fnmatch
 import os
 import shutil
 import errno
+import argparse
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--no-vim-plugins-please',
+                        dest='skip_plugins',
+                        action='store_true',
+                        help='Skip linking Vim plugins.')
+    return parser.parse_args()
 
 
 def __symlink(source, destination):
@@ -42,11 +52,16 @@ def proccess_vim_plugins(dir):
 
 
 def main():
+    options = parse_args()
+
     repository_root = os.path.dirname(os.path.realpath(os.path.join(__file__, '../')))
 
+    print('Working on dotfiles..')
     [proccess_dotfiles(dir) for dir in os.listdir(repository_root) if os.path.isdir(os.path.join(repository_root, dir))]
 
-    [proccess_vim_plugins(dir) for dir in os.listdir('vim/bundle') if os.path.isdir(os.path.join('vim/bundle', dir))]
+    if not options.skip_plugins:
+        print('Working on Vim plugins..')
+        [proccess_vim_plugins(dir) for dir in os.listdir('vim/bundle') if os.path.isdir(os.path.join('vim/bundle', dir))]
 
 
 if __name__ == '__main__':

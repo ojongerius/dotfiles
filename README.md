@@ -6,7 +6,17 @@ https://dotfiles.github.io
 
 ## Dotfiles
 
-Create symlinks to these dotfiles by running ```create_symlinks.py```. Existing files will be renamed with ```.orig``` as suffix.
+Create symlinks to these dotfiles by running ```create_symlinks.py```. Existing files will be renamed with ```.orig``` as suffix. This will link Vim plugins unless you pass ```--no-vim-plugins-please``` (a simple ```--no``` will do too), like so:
+
+```bash
+scripts/create_symlinks.py --no-vim-plugins-please
+```
+
+## Vim plugins
+
+Are submodules in vim/bundle. Runnning ```create_symlinks.py``` will link them
+to ~/vim/bundle. Existing directories will be renamed with ```.orig``` as
+suffix.
 
 ```bash
 scripts/create_symlinks.py
