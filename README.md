@@ -47,7 +47,6 @@ Put things that do not belong in a public repository in a ```~/.extra``` and let
 ### Bootstrap
 * Homebrew
 * oh-my-zsh
-  vim-colors-solarized vim-tmux-navigator.git
 * Autojump, virtualenvwrapper
 
 ### Configure
