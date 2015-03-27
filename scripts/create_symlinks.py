@@ -37,10 +37,16 @@ def proccess_dotfiles(dir):
             __create_links(os.path.realpath(os.path.join(dir, file)), os.path.expanduser('~/%s' % file))
 
 
+def proccess_vim_plugins(dir):
+    __create_links(os.path.realpath('vim/bundle/%s' % dir), os.path.expanduser('~/.vim/bundle/%s' % dir))
+
+
 def main():
     repository_root = os.path.dirname(os.path.realpath(os.path.join(__file__, '../')))
 
     [proccess_dotfiles(dir) for dir in os.listdir(repository_root) if os.path.isdir(os.path.join(repository_root, dir))]
+
+    [proccess_vim_plugins(dir) for dir in os.listdir('vim/bundle') if os.path.isdir(os.path.join('vim/bundle', dir))]
 
 
 if __name__ == '__main__':
