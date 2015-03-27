@@ -24,8 +24,7 @@ scripts/create_symlinks.py
 
 ## OSX
 
-Run a whole bunch of OSX customisations. Taken from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles) 
-with some customisations.
+Run a whole bunch of OSX tweaks. Taken from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles) with some adjustments.
 
 ```bash
 scripts/osx.sh
@@ -48,7 +47,6 @@ Put things that do not belong in a public repository in a ```~/.extra``` and let
 ### Bootstrap
 * Homebrew
 * oh-my-zsh
-* Vim plugins: pathogen, syntastic, jedi-vim, nerdtree, vim-flake8,
   vim-colors-solarized vim-tmux-navigator.git
 * Autojump, virtualenvwrapper
 
@@ -56,4 +54,3 @@ Put things that do not belong in a public repository in a ```~/.extra``` and let
 * Configure IntelliJ
 * Make gnu versions of find and sed the default
 * Symlink Spectacle
-
