@@ -73,4 +73,3 @@ Put things that do not belong in a public repository in a ```~/.extra``` and let
 ### Configure
 * Configure IntelliJ
 * Make gnu versions of find and sed the default
-* Symlink Spectacle
