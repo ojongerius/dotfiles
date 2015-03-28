@@ -25,3 +25,6 @@
 [submodule "vim/bundle/vim-tmux-navigator"]
 	path = vim/bundle/vim-tmux-navigator
 	url = git@github.com:christoomey/vim-tmux-navigator.git
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git

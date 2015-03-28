@@ -6,10 +6,23 @@ https://dotfiles.github.io
 
 ## Dotfiles
 
-Create symlinks to these dotfiles by running ```create_symlinks.py```. Existing files will be renamed with ```.orig``` as suffix. This will link Vim plugins unless you pass ```--no-vim-plugins-please``` (a simple ```--no``` will do too), like so:
+Create symlinks to these dotfiles by running ```create_symlinks.py```. Existing files will be renamed with ```.orig``` as suffix.
+
+```create_symlinks.py``` will link Vim plugins unless you pass ```--no-vim-plugins-please``` (a simple ```--no-vim``` will do, too)
+
+```create_symlinks.py``` will link Spectacle preferences unless you pass ```--no-spectacle-please``` (a simple ```--no-spectacle``` will do too), see ```--help``` for more:
 
 ```bash
-scripts/create_symlinks.py --no-vim-plugins-please
+> scripts/create_symlinks.py --help
+usage: create_symlinks.py [-h] [--no-vim-plugins-please]
+                          [--no-spectacle-please]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --no-vim-plugins-please
+                        Skip linking Vim plugins.
+  --no-spectacle-please
+                        Skip linking Spectacle preferences.
 ```
 
 ## Vim plugins
@@ -17,6 +30,14 @@ scripts/create_symlinks.py --no-vim-plugins-please
 Are submodules in vim/bundle. Runnning ```create_symlinks.py``` will link them
 to ~/vim/bundle. Existing directories will be renamed with ```.orig``` as
 suffix.
+
+```bash
+scripts/create_symlinks.py
+```
+
+## Spectacle
+
+Spectacle preferences. Runnning ```create_symlinks.py``` will link it to ```~/Library/Preferences/```. A existing plist will be renamed with ```.orig``` as suffix.
 
 ```bash
 scripts/create_symlinks.py

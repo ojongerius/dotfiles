@@ -13,6 +13,10 @@ def parse_args():
                         dest='skip_plugins',
                         action='store_true',
                         help='Skip linking Vim plugins.')
+    parser.add_argument('--no-spectacle-please',
+                        dest='skip_spectacle',
+                        action='store_true',
+                        help='Skip linking Spectacle preferences.')
     return parser.parse_args()
 
 
@@ -34,7 +38,7 @@ def __create_links(source, destination):
                 if os.path.islink(destination) and \
                         os.path.realpath(source) == os.path.realpath(destination):
                     print('INFO: Nothing to do here: %s LGTM.' % destination)
-                    return
+                    return False
                 __backup(destination)
                 __symlink(source, destination)
             else:
@@ -62,6 +66,12 @@ def main():
     if not options.skip_plugins:
         print('Working on Vim plugins..')
         [proccess_vim_plugins(dir) for dir in os.listdir('vim/bundle') if os.path.isdir(os.path.join('vim/bundle', dir))]
+
+    if not options.skip_spectacle:
+        print('Working on Spectacle..')
+        file = 'com.divisiblebyzero.Spectacle.plist'
+        if __create_links(os.path.realpath('spectacle/%s' % file), os.path.expanduser('~/Library/Preferences/%s' % file)):
+            print("INFO: You'll have to restart Spectacle to pick up any changes.")
 
 
 if __name__ == '__main__':
