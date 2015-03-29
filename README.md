@@ -1,55 +1,50 @@
 # Otto's dotfiles
 
-Collection of dotfiles I use. If you are looking for something that tries to
-work for everybody, you should probably look at larger projects listed at
-https://dotfiles.github.io
+Collection of OSX centered dotfiles, programs and settings I use.
+
+If you are looking for something that tries to work for everybody, you should probably look at larger projects listed at https://dotfiles.github.io
+
+## Installation
+Running _./install.py_ could:
+
+* Install xcode, Homebrew and programs listed in _brew/Brewfile_.
+* Clone and link Vim plugins.
+* Link Spectacle preferences.
+* Run OSX tweaks, install fonts and color schemes for Iterm2.
+
+```bash
+>./install.py
+usage: install.py [-h] [--dotfiles] [--vim-plugins] [--spectacle] [--brew]
+                  [--osx]
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --dotfiles     Install dotfiles
+  --vim-plugins  Linking Vim plugins
+  --spectacle    Link Spectacle preferences
+  --brew         Install Brew, Brewdle and packages
+  --osx          Tweak osx
+```
 
 ## Dotfiles
 
-Create symlinks to these dotfiles by running ```create_symlinks.py```. Existing files will be renamed with ```.orig``` as suffix.
-
-```create_symlinks.py``` will link Vim plugins unless you pass ```--no-vim-plugins-please``` (a simple ```--no-vim``` will do, too)
-
-```create_symlinks.py``` will link Spectacle preferences unless you pass ```--no-spectacle-please``` (a simple ```--no-spectacle``` will do too), see ```--help``` for more:
-
-```bash
-> scripts/create_symlinks.py --help
-usage: create_symlinks.py [-h] [--no-vim-plugins-please]
-                          [--no-spectacle-please]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --no-vim-plugins-please
-                        Skip linking Vim plugins.
-  --no-spectacle-please
-                        Skip linking Spectacle preferences.
-```
+Create symlinks to these dotfiles by running _install.py_. Existing files will be renamed with _.orig_ as suffix.
 
 ## Vim plugins
 
-Are submodules in vim/bundle. Runnning ```create_symlinks.py``` will link them
-to ~/vim/bundle. Existing directories will be renamed with ```.orig``` as
-suffix.
-
-```bash
-scripts/create_symlinks.py
-```
+Are submodules in vim/bundle. Runnning _install.py_ will link them to _~/vim/bundle_. Existing directories will be renamed with _.orig_ as suffix.
 
 ## Spectacle
 
-Spectacle preferences. Runnning ```create_symlinks.py``` will link it to ```~/Library/Preferences/```. A existing plist will be renamed with ```.orig``` as suffix.
-
-```bash
-scripts/create_symlinks.py
-```
+Spectacle preferences. Runnning _install.py_ will link it to _~/Library/Preferences/_. A existing plist will be renamed with _.orig_ as suffix.
 
 ## OSX
 
 Run a whole bunch of OSX tweaks. Taken from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles) with some adjustments.
 
-```bash
-scripts/osx.sh
-```
+## Brew
+
+Install xcode, Brew, add taps and Casks. See _brew/Brewfile_ for the list of programs. You can update this file by running ```brew brewdle dump```. See [the project page](https://github.com/Homebrew/homebrew-brewdler) for more information.
 
 ## Thanks!
 
@@ -59,16 +54,14 @@ scripts/osx.sh
 
 ## Extras
 
-Another nice one from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles)):
-Put things that do not belong in a public repository in a ```~/.extra``` and let
-```zsh/.zshrc``` source it for you.
+Another nice idea from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles)):
+Put things that do not belong in a public repository in a _~/.extra_ and let
+_zsh/.zshrc_ source it for you.
 
 ## Todo
 
 ### Bootstrap
-* Homebrew
 * oh-my-zsh
-* Autojump, virtualenvwrapper
 
 ### Configure
 * Configure IntelliJ

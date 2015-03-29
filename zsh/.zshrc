@@ -30,6 +30,10 @@ alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance
 export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 
+# Brew
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Vagrant
 export VAGRANT_DELTA_PROVISION=true # Default to delta provisioning
 

@@ -5,18 +5,39 @@ import os
 import shutil
 import errno
 import argparse
+import sys
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--no-vim-plugins-please',
-                        dest='skip_plugins',
+    parser.add_argument('--dotfiles',
+                        dest='dotfiles',
                         action='store_true',
-                        help='Skip linking Vim plugins.')
-    parser.add_argument('--no-spectacle-please',
-                        dest='skip_spectacle',
+                        help='Install dotfiles')
+
+    parser.add_argument('--vim-plugins',
+                        dest='plugins',
                         action='store_true',
-                        help='Skip linking Spectacle preferences.')
+                        help='Linking Vim plugins')
+
+    parser.add_argument('--spectacle',
+                        dest='spectacle',
+                        action='store_true',
+                        help='Link Spectacle preferences')
+
+    parser.add_argument('--brew',
+                        dest='brew',
+                        action='store_true',
+                        help='Install Brew, Brewdle and packages')
+
+    parser.add_argument('--osx',
+                        dest='osx',
+                        action='store_true',
+                        help='Tweak osx')
+
+    if len(sys.argv) == 1:
+        parser.print_help()
+
     return parser.parse_args()
 
 
@@ -55,23 +76,47 @@ def proccess_vim_plugins(dir):
     __create_links(os.path.realpath('vim/bundle/%s' % dir), os.path.expanduser('~/.vim/bundle/%s' % dir))
 
 
+def install_brew():
+    # Install xcode if not there
+    if os.system('xcode select -p') is not 0:
+        os.system('xcode-select --install')
+
+    # Install Homebrew
+    os.system('ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
+
+    # Install Brewdle
+    os.system('brew tap Homebrew/brewdler')
+
+    # All the apps
+    os.system('cd brew && brew brewdle Brewfile')
+
+
 def main():
     options = parse_args()
 
-    repository_root = os.path.dirname(os.path.realpath(os.path.join(__file__, '../')))
+    repository_root = os.path.dirname(os.path.realpath(os.path.join(__file__, '.')))
 
-    print('Working on dotfiles..')
-    [proccess_dotfiles(dir) for dir in os.listdir(repository_root) if os.path.isdir(os.path.join(repository_root, dir))]
+    if options.brew:
+        print('Working on Brew and programs..')
+        install_brew()
 
-    if not options.skip_plugins:
+    if options.dotfiles:
+        print('Working on dotfiles..')
+        [proccess_dotfiles(dir) for dir in os.listdir(repository_root) if os.path.isdir(os.path.join(repository_root, dir))]
+
+    if options.plugins:
         print('Working on Vim plugins..')
         [proccess_vim_plugins(dir) for dir in os.listdir('vim/bundle') if os.path.isdir(os.path.join('vim/bundle', dir))]
 
-    if not options.skip_spectacle:
+    if options.spectacle:
         print('Working on Spectacle..')
         file = 'com.divisiblebyzero.Spectacle.plist'
         if __create_links(os.path.realpath('spectacle/%s' % file), os.path.expanduser('~/Library/Preferences/%s' % file)):
-            print("INFO: You'll have to restart Spectacle to pick up any changes.")
+            print("INFO: You'll have to (re)start Spectacle to pick up any changes.")
+
+    if options.osx:
+        print('Working on osx customisations..')
+        os.system('sh osx/osx.sh')
 
 
 if __name__ == '__main__':
