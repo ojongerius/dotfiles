@@ -43,8 +43,5 @@ export VAGRANT_DELTA_PROVISION=true # Default to delta provisioning
 # Show us a fortune
 fortune
 
-# SAWL for AWS
-. ~/awscli-saml-auth/bashrc_additions
-
 # Extra settings not in this repository
 . ~/.extra
