@@ -9,6 +9,7 @@ ZSH_THEME="agnoster"
 
 ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+export KEYTIMEOUT=1
 
 # Plugins to use
 plugins=(git, vi-mode)

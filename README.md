@@ -36,7 +36,7 @@ Are submodules in vim/bundle. Runnning _install.py_ will link them to _~/vim/bun
 
 ## Spectacle
 
-Spectacle preferences. Runnning _install.py_ will link it to _~/Library/Preferences/_. A existing plist will be renamed with _.orig_ as suffix.
+Spectacle preferences. Runnning _install.py_ will link it to _~/Library/Preferences/_. An existing plist will be renamed with _.orig_ as suffix.
 
 ## OSX
 
