@@ -43,5 +43,7 @@ export VAGRANT_DELTA_PROVISION=true # Default to delta provisioning
 # Show us a fortune
 fortune
 
+alias vi=/usr/local/bin/vim
+
 # Extra settings not in this repository
 . ~/.extra
