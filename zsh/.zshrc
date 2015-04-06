@@ -16,6 +16,9 @@ plugins=(git, vi-mode)
 source $ZSH/oh-my-zsh.sh
 bindkey "^R" history-incremental-search-backward
 
+# Please don't share history
+unsetopt share_history
+
 CHARLIE_PATH="/Users/${USER}/atlassian/agent-charlie/bin:/Users/${USER}/atlassian/bin"
 PACKER_PATH="/Applications/Packer/bin"
 TERRAFORM_PATH="/Applications/terraform"
