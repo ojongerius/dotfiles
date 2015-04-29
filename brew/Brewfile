@@ -91,8 +91,8 @@ brew 'tcptraceroute'
 brew 'tmux'
 brew 'unixodbc'
 brew 'unrar'
-brew 'macvim', args ['with-lua']
-brew 'vim', args ['with-lua']
+brew 'macvim', args: ['with-lua']
+brew 'vim', args: ['with-lua']
 brew 'w3m'
 brew 'wget'
 brew 'wxmac'

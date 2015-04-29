@@ -88,7 +88,7 @@ def install_brew():
     os.system('brew tap Homebrew/brewdler')
 
     # All the apps
-    os.system('cd brew && brew brewdle Brewfile')
+    os.system('cd brew && brew bundle')
 
 
 def main():
