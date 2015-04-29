@@ -5,6 +5,9 @@ Collection of OSX centered dotfiles, programs and settings I use.
 If you are looking for something that tries to work for everybody, you should probably look at larger projects listed at https://dotfiles.github.io
 
 ## Installation
+Make sure you have cloned this repository with --recursive, or run `git
+submodule update --init --recursive` to fetch its submodules.
+
 Running _./install.py_ could:
 
 * Install xcode, Homebrew and programs listed in _brew/Brewfile_.
