@@ -103,6 +103,7 @@ def main():
     if options.dotfiles:
         print('Working on dotfiles..')
         [proccess_dotfiles(dir) for dir in os.listdir(repository_root) if os.path.isdir(os.path.join(repository_root, dir))]
+        os.system('touch ~/.extra')
 
     if options.plugins:
         print('Working on Vim plugins..')
