@@ -13,27 +13,32 @@ def parse_args():
     parser.add_argument('--dotfiles',
                         dest='dotfiles',
                         action='store_true',
-                        help='Install dotfiles')
+                        help='install dotfiles')
 
     parser.add_argument('--vim-plugins',
                         dest='plugins',
                         action='store_true',
-                        help='Linking Vim plugins')
+                        help='linking Vim plugins')
 
     parser.add_argument('--spectacle',
                         dest='spectacle',
                         action='store_true',
-                        help='Link Spectacle preferences')
+                        help='link Spectacle preferences')
 
     parser.add_argument('--brew',
                         dest='brew',
                         action='store_true',
-                        help='Install Brew, Brewdle and packages')
+                        help='install Brew, Brewdle and packages')
 
     parser.add_argument('--osx',
                         dest='osx',
                         action='store_true',
-                        help='Tweak osx')
+                        help='tweak osx')
+
+    parser.add_argument('--oh-my-zsh',
+                        dest='zsh',
+                        action='store_true',
+                        help='install Oh-my-zsh')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -95,6 +100,10 @@ def main():
     options = parse_args()
 
     repository_root = os.path.dirname(os.path.realpath(os.path.join(__file__, '.')))
+
+    if options.zsh:
+        print('Working on Oh-my-zsh..')
+        os.system('curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh')
 
     if options.brew:
         print('Working on Brew and programs..')

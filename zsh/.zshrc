@@ -35,7 +35,7 @@ export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 
 # Brew
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH # Prefer brew over native
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Vagrant
