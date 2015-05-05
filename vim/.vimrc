@@ -9,6 +9,10 @@ set ruler                             " Set a ruler
 " set nowrap                          " don't automatically wrap on load
 set fo-=t                             " don't automatically wrap text when typing
 
+" Save swapfiles in ~/tmp
+set swapfile
+set dir=~/tmp
+
 " Misc
 "
 autocmd! bufwritepost .vimrc source % " Reload .vim.rc on save
