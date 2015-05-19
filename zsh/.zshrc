@@ -27,7 +27,7 @@ ANDROID_DEV_PATH="Users/${USER}/dev/android/adt-bundle-mac-x86_64-20140321/sdk/t
 export PATH=$PATH:$CHARLIE_PATH:$PACKER_PATH:$TERRAFORM_PATH:$ATLASSIAN_SDK_PATH:$ANDROID_DEV_PATH
 
 # Python dev
-source /usr/local/bin/virtualenvwrapper.sh
+[[ -f /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'" # Make ipython respect virtualenv
 
 # Go dev
@@ -35,7 +35,7 @@ export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 
 # Brew
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH # Prefer brew over native
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Vagrant
@@ -45,7 +45,7 @@ export VAGRANT_DELTA_PROVISION=true # Default to delta provisioning
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 # Show us a fortune
-fortune
+command -v foo >/dev/null 2>&1 && fortune
 
 alias vi=/usr/local/bin/vim
 
