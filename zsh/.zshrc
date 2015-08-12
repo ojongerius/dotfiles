@@ -39,7 +39,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH # Prefer brew over native
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Vagrant
-export VAGRANT_DELTA_PROVISION=true # Default to delta provisioning
+#export VAGRANT_DELTA_PROVISION=true # Default to delta provisioning
 
 # Autojump
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
