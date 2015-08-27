@@ -66,6 +66,7 @@ brew 'ncdu'
 brew 'netcat'
 brew 'newt', args: ['with-python']
 brew 'nginx'
+brew 'ngrok'
 brew 'nmap'
 brew 'node'
 brew 'openssh'
