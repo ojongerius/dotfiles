@@ -4,6 +4,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Solarized
 export SOLARIZED_THEME=dark
 
+# COPYFILE_DISABLE, don't copy extended attributes into tarballs
+export COPYFILE_DISABLE=1
+
 # Theme
 ZSH_THEME="agnoster"
 
