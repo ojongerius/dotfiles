@@ -15,7 +15,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 export KEYTIMEOUT=1
 
 # Plugins to use
-plugins=(git, vi-mode)
+plugins=(git, vi-mode, golang)
 source $ZSH/oh-my-zsh.sh
 bindkey "^R" history-incremental-search-backward
 
