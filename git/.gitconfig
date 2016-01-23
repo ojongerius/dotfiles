@@ -173,7 +173,7 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
-[user]
-	name = Otto Jongerius
-	email = ojongerius@atlassian.com
-	key = 5BAABBFA
+
+[include]
+
+    path = ~/gitconfig/config
