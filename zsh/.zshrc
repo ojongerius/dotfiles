@@ -8,7 +8,8 @@ export SOLARIZED_THEME=dark
 export COPYFILE_DISABLE=1
 
 # Theme
-ZSH_THEME="agnoster"
+ZSH_THEME="avit"
+#ZSH_THEME="agnoster"
 
 ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
