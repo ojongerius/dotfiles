@@ -42,6 +42,10 @@ export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH # Prefer brew over native
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+# Java
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=${JAVA_HOME}/bin:$PATH
+
 # Vagrant
 #export VAGRANT_DELTA_PROVISION=true # Default to delta provisioning
 
