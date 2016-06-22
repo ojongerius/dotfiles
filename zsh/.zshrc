@@ -59,5 +59,3 @@ alias vi=/usr/local/bin/vim
 
 # Extra settings not in this repository
 . ~/.extra
-
-eval "$(docker-machine env default)"
