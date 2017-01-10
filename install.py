@@ -92,7 +92,12 @@ def install_brew():
     # Install Brewdle
     os.system('brew tap Homebrew/brewdler')
 
+    # Install Caskroom
+    os.system('brew tap caskroom/cask')
+
     # All the apps
+    os.system('brew install brew-cask')
+
     os.system('cd brew && brew bundle')
 
 
