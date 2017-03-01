@@ -52,6 +52,9 @@ export PATH=${JAVA_HOME}/bin:$PATH
 # Autojump
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
+# Kube
+source <(kubectl completion zsh)
+
 # Show us a fortune
 command -v foo >/dev/null 2>&1 && fortune
 
