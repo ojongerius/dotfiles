@@ -1,7 +1,7 @@
 " Presentation
 "
 syntax on
-set background=dark
+set background=light
 highlight ColorColumn ctermbg=233
 set colorcolumn=80                    " try to behave
 " set nonumber                        " show line numbers -no need with statusbar
