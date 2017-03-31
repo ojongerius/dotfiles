@@ -60,5 +60,8 @@ command -v foo >/dev/null 2>&1 && fortune
 
 alias vi=/usr/local/bin/vim
 
+# disable "sure you want to delete all the files"
+setopt rmstarsilent
+
 # Extra settings not in this repository
 . ~/.extra
