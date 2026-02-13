@@ -25,6 +25,11 @@ def parse_args():
                         action='store_true',
                         help='tweak osx')
 
+    parser.add_argument('--ghostty',
+                        dest='ghostty',
+                        action='store_true',
+                        help='link Ghostty config')
+
     parser.add_argument('--oh-my-zsh',
                         dest='zsh',
                         action='store_true',
@@ -98,6 +103,12 @@ def main():
             if os.path.isdir(os.path.join(repository_root, dir)):
                 proccess_dotfiles(dir)
         os.system('touch ~/.extra')
+
+    if options.ghostty:
+        print('Working on Ghostty config..')
+        ghostty_dir = os.path.expanduser('~/.config/ghostty')
+        os.makedirs(ghostty_dir, exist_ok=True)
+        __create_links(os.path.realpath('ghostty/config'), os.path.join(ghostty_dir, 'config'))
 
     if options.osx:
         print('Working on osx customisations..')
