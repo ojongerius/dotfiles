@@ -8,6 +8,7 @@ If you are looking for something that tries to work for everybody, you should pr
 Running _./install.sh_ could:
 
 * Install xcode, Homebrew and programs listed in _brew/Brewfile_.
+* Set up Fish shell with Starship prompt.
 * Link Ghostty terminal config.
 * Link Claude Code skills.
 * Run macOS tweaks.
@@ -21,8 +22,9 @@ Options:
   --ghostty     Link Ghostty config to ~/.config/ghostty/
   --brew        Install Xcode, Homebrew, and packages from Brewfile
   --osx         Run macOS system tweaks (osx/osx.sh)
-  --oh-my-zsh   Install Oh-my-zsh
+  --fish        Set up Fish shell with Starship prompt
   --claude      Link Claude Code skills to ~/.claude/skills/
+  --dry-run     Preview what would be done without making changes
   --help        Show this help message
 ```
 
@@ -42,9 +44,9 @@ Install xcode, Brew, add taps and Casks. See _brew/Brewfile_ for the list of pro
 
 Link Claude Code skills from _claude/skills/_ to _~/.claude/skills/_.
 
-## Oh-my-zsh
+## Fish + Starship
 
-Install oh-my-zsh.
+Set up [Fish shell](https://fishshell.com/) with [Starship](https://starship.rs/) prompt. Uses JetBrains Mono Nerd Font for icons. Config files are in _fish/config.fish_ and _starship/starship.toml_.
 
 ## Thanks!
 
@@ -54,6 +56,6 @@ Install oh-my-zsh.
 
 ## Extras
 
-Another nice idea from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles)):
-Put things that do not belong in a public repository in a _~/.extra_ and let
-_zsh/.zshrc_ source it for you.
+Another nice idea from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles):
+Put things that do not belong in a public repository in a _~/.extra.fish_ and let
+_fish/config.fish_ source it for you.

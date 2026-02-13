@@ -17,6 +17,7 @@ The main entry point is `install.sh` (Bash), which supports modular flags:
 ./install.sh --osx            # Run macOS system tweaks (osx/osx.sh)
 ./install.sh --fish           # Set up Fish shell with Starship prompt
 ./install.sh --claude         # Link Claude Code skills to ~/.claude/skills/
+./install.sh --dry-run        # Preview what would be done without making changes
 ```
 
 
@@ -42,3 +43,13 @@ dotfiles/
 - `~/.extra.fish` — sourced by config.fish for private/machine-specific config
 - `~/gitconfig/config` — included by .gitconfig for local overrides
 - `~/.tmux.conf.user` — optionally sourced by .tmux.conf
+
+## Testing
+
+Run tests with [bats-core](https://github.com/bats-core/bats-core):
+
+```bash
+bats test_install.bats
+```
+
+Tests cover symlink creation, idempotency, backup behavior, and dry-run mode for all `install.sh` modules.
