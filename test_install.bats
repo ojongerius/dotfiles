@@ -81,6 +81,7 @@ setup() {
 
     [ -L "$fake_home/.config" ]
     [ ! -e "$fake_home/readme" ]
+    [ -f "$fake_home/.extra" ]
 }
 
 # --- backup test (ported from TestBackup) ---
@@ -93,7 +94,7 @@ setup() {
 
     _symlink "$src" "$dest"
 
-    [ ! -f "$dest" ] || [ -L "$dest" ]
+    [ -L "$dest" ]
     [ -f "${dest}.orig" ]
     [ "$(cat "${dest}.orig")" = "content" ]
 }

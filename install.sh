@@ -56,13 +56,13 @@ do_dotfiles() {
             _symlink "$(realpath "$file")" "$HOME/$name"
         done
     done
-    touch ~/.extra
+    touch "$HOME/.extra"
 }
 
 do_ghostty() {
     echo "Working on Ghostty config.."
-    mkdir -p ~/.config/ghostty
-    _symlink "$REPO_DIR/ghostty/config" ~/.config/ghostty/config
+    mkdir -p "$HOME/.config/ghostty"
+    _symlink "$(realpath "$REPO_DIR/ghostty/config")" "$HOME/.config/ghostty/config"
 }
 
 do_brew() {
@@ -70,7 +70,9 @@ do_brew() {
     if ! xcode-select -p &>/dev/null; then
         xcode-select --install
     fi
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if ! command -v brew &>/dev/null; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
     brew bundle --file="$REPO_DIR/brew/Brewfile"
 }
 
@@ -86,7 +88,7 @@ do_oh_my_zsh() {
 
 do_claude() {
     echo "Working on Claude Code skills.."
-    mkdir -p ~/.claude/skills
+    mkdir -p "$HOME/.claude/skills"
     for skill_dir in "$REPO_DIR/claude/skills"/*/; do
         [ -d "$skill_dir" ] || continue
         name="$(basename "$skill_dir")"
