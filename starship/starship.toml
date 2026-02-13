@@ -9,17 +9,40 @@ $character"""
 [directory]
 truncation_length = 3
 truncate_to_repo = false
+format = "[ $path]($style) "
+style = "bold cyan"
 
 [git_branch]
-format = "[$branch]($style) "
+format = "[ $branch]($style) "
+style = "bold purple"
 
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
+style = "bold yellow"
 
 [cmd_duration]
 min_time = 2_000
-format = "[$duration]($style) "
+format = "[ $duration]($style) "
+style = "bold yellow"
 
 [character]
-success_symbol = "[❯](green)"
-error_symbol = "[❯](red)"
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[rust]
+disabled = true
+
+[golang]
+disabled = true
