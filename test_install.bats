@@ -86,6 +86,31 @@ setup() {
 
 # --- backup test (ported from TestBackup) ---
 
+# --- do_fish tests ---
+
+@test "do_fish symlinks fish config and starship config" {
+    local fake_home="$TEST_DIR/home"
+    mkdir -p "$fake_home/.config"
+
+    local repo="$TEST_DIR/repo"
+    mkdir -p "$repo/fish" "$repo/starship"
+    echo "fish cfg" > "$repo/fish/config.fish"
+    echo "starship cfg" > "$repo/starship/starship.toml"
+
+    HOME="$fake_home"
+    REPO_DIR="$repo"
+    # Stub out chsh/sudo/grep to avoid system changes in tests
+    chsh() { :; }
+    sudo() { :; }
+    export -f chsh sudo
+
+    do_fish
+
+    [ -L "$fake_home/.config/fish/config.fish" ]
+    [ -L "$fake_home/.config/starship.toml" ]
+    [ -f "$fake_home/.extra.fish" ]
+}
+
 @test "backup via _symlink renames file with .orig suffix" {
     local dest="$TEST_DIR/myfile"
     local src="$TEST_DIR/newsrc"
