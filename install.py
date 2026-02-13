@@ -63,7 +63,7 @@ def __create_links(source, destination):
 
 def proccess_dotfiles(dir):
     for file in os.listdir(dir):
-        if fnmatch.fnmatch(file, '.*') and not fnmatch.fnmatch(file, '.*.swp'):
+        if fnmatch.fnmatch(file, '.*'):
             __create_links(os.path.realpath(os.path.join(dir, file)), os.path.expanduser(f'~/{file}'))
 
 
@@ -73,17 +73,9 @@ def install_brew():
         os.system('xcode-select --install')
 
     # Install Homebrew
-    os.system('ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
+    os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
 
-    # Install Brewdle
-    os.system('brew tap Homebrew/brewdler')
-
-    # Install Caskroom
-    os.system('brew tap caskroom/cask')
-
-    # All the apps
-    os.system('brew install brew-cask')
-
+    # Install packages from Brewfile
     os.system('cd brew && brew bundle')
 
 
