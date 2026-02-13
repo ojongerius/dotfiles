@@ -1,12 +1,8 @@
 #!/usr/bin/env bats
 
 setup() {
-    TEST_DIR="$(mktemp -d)"
+    TEST_DIR="$BATS_TEST_TMPDIR"
     source "$BATS_TEST_DIRNAME/install.sh"
-}
-
-teardown() {
-    rm -rf "$TEST_DIR"
 }
 
 # --- _symlink tests (ported from TestCreateLinks) ---
