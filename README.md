@@ -8,15 +8,17 @@ If you are looking for something that tries to work for everybody, you should pr
 Running _./install.py_ could:
 
 * Install xcode, Homebrew and programs listed in _brew/Brewfile_.
+* Link Ghostty terminal config.
 * Run macOS tweaks.
 
 ```bash
 >./install.py
-usage: install.py [-h] [--dotfiles] [--brew] [--osx] [--oh-my-zsh]
+usage: install.py [-h] [--dotfiles] [--ghostty] [--brew] [--osx] [--oh-my-zsh]
 
 optional arguments:
   -h, --help     show this help message and exit
   --dotfiles     Install dotfiles
+  --ghostty      Link Ghostty config
   --brew         Install Brew, Brewdle and packages
   --osx          Tweak osx
   --oh-my-zsh    Install Oh-my-zsh

@@ -12,6 +12,7 @@ The main entry point is `install.py` (Python 3), which supports modular flags:
 
 ```bash
 python3 install.py --dotfiles       # Symlink all dotfiles to ~/
+python3 install.py --ghostty        # Link Ghostty config to ~/.config/ghostty/
 python3 install.py --brew           # Install Xcode, Homebrew, and packages from Brewfile
 python3 install.py --osx            # Run macOS system tweaks (osx/osx.sh)
 python3 install.py --oh-my-zsh      # Install Oh-my-zsh
@@ -28,6 +29,7 @@ dotfiles/
 ├── git/.gitconfig      # 50+ aliases, GitHub shortcuts, external includes
 ├── git/.gitignore      # Global gitignore
 ├── tmux/.tmux.conf     # Tmux with screen-like bindings (C-a prefix)
+├── ghostty/config      # Ghostty terminal config
 └── brew/Brewfile       # Homebrew packages and casks (incl. Ghostty, Rectangle, JetBrains Toolbox)
 ```
 
