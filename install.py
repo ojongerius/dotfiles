@@ -35,6 +35,11 @@ def parse_args():
                         action='store_true',
                         help='install Oh-my-zsh')
 
+    parser.add_argument('--claude',
+                        dest='claude',
+                        action='store_true',
+                        help='link Claude Code skills to ~/.claude/skills/')
+
     if len(sys.argv) == 1:
         parser.print_help()
 
@@ -109,6 +114,16 @@ def main():
         ghostty_dir = os.path.expanduser('~/.config/ghostty')
         os.makedirs(ghostty_dir, exist_ok=True)
         _create_links(os.path.realpath('ghostty/config'), os.path.join(ghostty_dir, 'config'))
+
+    if options.claude:
+        print('Working on Claude Code skills..')
+        skills_src = os.path.join(repository_root, 'claude', 'skills')
+        skills_dest = os.path.expanduser('~/.claude/skills')
+        os.makedirs(skills_dest, exist_ok=True)
+        for skill in os.listdir(skills_src):
+            skill_src = os.path.realpath(os.path.join(skills_src, skill))
+            if os.path.isdir(skill_src):
+                _create_links(skill_src, os.path.join(skills_dest, skill))
 
     if options.osx:
         print('Working on osx customisations..')

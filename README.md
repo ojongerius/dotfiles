@@ -9,11 +9,12 @@ Running _./install.py_ could:
 
 * Install xcode, Homebrew and programs listed in _brew/Brewfile_.
 * Link Ghostty terminal config.
+* Link Claude Code skills.
 * Run macOS tweaks.
 
 ```bash
 >./install.py
-usage: install.py [-h] [--dotfiles] [--ghostty] [--brew] [--osx] [--oh-my-zsh]
+usage: install.py [-h] [--dotfiles] [--ghostty] [--brew] [--osx] [--oh-my-zsh] [--claude]
 
 optional arguments:
   -h, --help     show this help message and exit
@@ -22,6 +23,7 @@ optional arguments:
   --brew         Install Brew, Brewdle and packages
   --osx          Tweak osx
   --oh-my-zsh    Install Oh-my-zsh
+  --claude       Link Claude Code skills to ~/.claude/skills/
 ```
 
 ## Dotfiles
@@ -35,6 +37,10 @@ Run a whole bunch of macOS tweaks. Taken from [@mathiasbynens](https://github.co
 ## Brew
 
 Install xcode, Brew, add taps and Casks. See _brew/Brewfile_ for the list of programs.
+
+## Claude Code
+
+Link Claude Code skills from _claude/skills/_ to _~/.claude/skills/_.
 
 ## Oh-my-zsh
 

@@ -16,6 +16,7 @@ python3 install.py --ghostty        # Link Ghostty config to ~/.config/ghostty/
 python3 install.py --brew           # Install Xcode, Homebrew, and packages from Brewfile
 python3 install.py --osx            # Run macOS system tweaks (osx/osx.sh)
 python3 install.py --oh-my-zsh      # Install Oh-my-zsh
+python3 install.py --claude         # Link Claude Code skills to ~/.claude/skills/
 ```
 
 
@@ -30,6 +31,7 @@ dotfiles/
 ├── git/.gitignore      # Global gitignore
 ├── tmux/.tmux.conf     # Tmux with screen-like bindings (C-a prefix)
 ├── ghostty/config      # Ghostty terminal config
+├── claude/skills/      # Claude Code skills (symlinked to ~/.claude/skills/)
 └── brew/Brewfile       # Homebrew packages and casks (incl. Ghostty, Rectangle, JetBrains Toolbox)
 ```
 
