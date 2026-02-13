@@ -24,6 +24,7 @@ Options:
   --osx         Run macOS system tweaks (osx/osx.sh)
   --fish        Set up Fish shell with Starship prompt
   --claude      Link Claude Code skills to ~/.claude/skills/
+  --dry-run     Preview what would be done without making changes
   --help        Show this help message
 ```
 
@@ -55,6 +56,6 @@ Set up [Fish shell](https://fishshell.com/) with [Starship](https://starship.rs/
 
 ## Extras
 
-Another nice idea from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles)):
+Another nice idea from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles):
 Put things that do not belong in a public repository in a _~/.extra.fish_ and let
 _fish/config.fish_ source it for you.

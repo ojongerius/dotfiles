@@ -17,6 +17,7 @@ The main entry point is `install.sh` (Bash), which supports modular flags:
 ./install.sh --osx            # Run macOS system tweaks (osx/osx.sh)
 ./install.sh --fish           # Set up Fish shell with Starship prompt
 ./install.sh --claude         # Link Claude Code skills to ~/.claude/skills/
+./install.sh --dry-run        # Preview what would be done without making changes
 ```
 
 
