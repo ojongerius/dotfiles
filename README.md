@@ -18,7 +18,7 @@ Personal macOS dotfiles managing configs for Fish, Starship, Git, Tmux, Ghostty,
 ## Quick start
 
 ```bash
-git clone https://github.com/ottojongerius/dotfiles.git
+git clone https://github.com/ojongerius/dotfiles.git
 cd dotfiles
 ./install.sh --dotfiles --fish --ghostty --brew --osx --claude
 ```
