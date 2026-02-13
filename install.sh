@@ -52,6 +52,7 @@ do_dotfiles() {
         for file in "$dir".*; do
             [ -e "$file" ] || continue
             name="$(basename "$file")"
+            [[ "$name" == "." || "$name" == ".." ]] && continue
             _symlink "$(realpath "$file")" "$HOME/$name"
         done
     done
@@ -94,23 +95,25 @@ do_claude() {
 }
 
 # ---------------------------------------------------------------------------
-# Main
+# Main — only runs when executed directly, not when sourced (e.g. by tests)
 # ---------------------------------------------------------------------------
 
-if [ $# -eq 0 ]; then
-    usage
-    exit 0
-fi
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    if [ $# -eq 0 ]; then
+        usage
+        exit 0
+    fi
 
-for arg in "$@"; do
-    case "$arg" in
-        --dotfiles)  do_dotfiles ;;
-        --ghostty)   do_ghostty ;;
-        --brew)      do_brew ;;
-        --osx)       do_osx ;;
-        --oh-my-zsh) do_oh_my_zsh ;;
-        --claude)    do_claude ;;
-        --help)      usage ;;
-        *)           echo "Unknown option: $arg"; usage; exit 1 ;;
-    esac
-done
+    for arg in "$@"; do
+        case "$arg" in
+            --dotfiles)  do_dotfiles ;;
+            --ghostty)   do_ghostty ;;
+            --brew)      do_brew ;;
+            --osx)       do_osx ;;
+            --oh-my-zsh) do_oh_my_zsh ;;
+            --claude)    do_claude ;;
+            --help)      usage ;;
+            *)           echo "Unknown option: $arg"; usage; exit 1 ;;
+        esac
+    done
+fi

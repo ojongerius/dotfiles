@@ -8,15 +8,15 @@ Personal macOS dotfiles managing configs for Zsh (oh-my-zsh), Git, Tmux, and Hom
 
 ## Installation
 
-The main entry point is `install.py` (Python 3), which supports modular flags:
+The main entry point is `install.sh` (Bash), which supports modular flags:
 
 ```bash
-python3 install.py --dotfiles       # Symlink all dotfiles to ~/
-python3 install.py --ghostty        # Link Ghostty config to ~/.config/ghostty/
-python3 install.py --brew           # Install Xcode, Homebrew, and packages from Brewfile
-python3 install.py --osx            # Run macOS system tweaks (osx/osx.sh)
-python3 install.py --oh-my-zsh      # Install Oh-my-zsh
-python3 install.py --claude         # Link Claude Code skills to ~/.claude/skills/
+./install.sh --dotfiles       # Symlink all dotfiles to ~/
+./install.sh --ghostty        # Link Ghostty config to ~/.config/ghostty/
+./install.sh --brew           # Install Xcode, Homebrew, and packages from Brewfile
+./install.sh --osx            # Run macOS system tweaks (osx/osx.sh)
+./install.sh --oh-my-zsh      # Install Oh-my-zsh
+./install.sh --claude         # Link Claude Code skills to ~/.claude/skills/
 ```
 
 
@@ -24,7 +24,7 @@ python3 install.py --claude         # Link Claude Code skills to ~/.claude/skill
 
 ```
 dotfiles/
-├── install.py          # Installer: symlinks dotfiles, installs packages
+├── install.sh          # Installer: symlinks dotfiles, installs packages
 ├── osx/osx.sh          # 600+ lines of macOS defaults customization
 ├── zsh/.zshrc          # Oh-my-zsh with avit theme
 ├── git/.gitconfig      # 50+ aliases, GitHub shortcuts, external includes
@@ -35,7 +35,7 @@ dotfiles/
 └── brew/Brewfile       # Homebrew packages and casks (incl. Ghostty, Rectangle, JetBrains Toolbox)
 ```
 
-**Symlink pattern:** `install.py --dotfiles` finds all `.*` files in subdirectories and symlinks them to `~/`, backing up existing files as `.orig`.
+**Symlink pattern:** `install.sh --dotfiles` finds all `.*` files in subdirectories and symlinks them to `~/`, backing up existing files as `.orig`.
 
 **External config hooks:**
 - `~/.extra` — sourced by .zshrc for private/machine-specific config

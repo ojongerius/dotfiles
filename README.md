@@ -5,7 +5,7 @@ Collection of macOS dotfiles, programs and settings I use.
 If you are looking for something that tries to work for everybody, you should probably look at larger projects listed at https://dotfiles.github.io
 
 ## Installation
-Running _./install.py_ could:
+Running _./install.sh_ could:
 
 * Install xcode, Homebrew and programs listed in _brew/Brewfile_.
 * Link Ghostty terminal config.
@@ -13,22 +13,22 @@ Running _./install.py_ could:
 * Run macOS tweaks.
 
 ```bash
->./install.py
-usage: install.py [-h] [--dotfiles] [--ghostty] [--brew] [--osx] [--oh-my-zsh] [--claude]
+>./install.sh
+Usage: install.sh [OPTIONS]
 
-optional arguments:
-  -h, --help     show this help message and exit
-  --dotfiles     Install dotfiles
-  --ghostty      Link Ghostty config
-  --brew         Install Brew, Brewdle and packages
-  --osx          Tweak osx
-  --oh-my-zsh    Install Oh-my-zsh
-  --claude       Link Claude Code skills to ~/.claude/skills/
+Options:
+  --dotfiles    Symlink all dotfiles to ~/
+  --ghostty     Link Ghostty config to ~/.config/ghostty/
+  --brew        Install Xcode, Homebrew, and packages from Brewfile
+  --osx         Run macOS system tweaks (osx/osx.sh)
+  --oh-my-zsh   Install Oh-my-zsh
+  --claude      Link Claude Code skills to ~/.claude/skills/
+  --help        Show this help message
 ```
 
 ## Dotfiles
 
-Create symlinks to these dotfiles by running _install.py_. Existing files will be renamed with _.orig_ as suffix.
+Create symlinks to these dotfiles by running _install.sh_. Existing files will be renamed with _.orig_ as suffix.
 
 ## macOS
 
