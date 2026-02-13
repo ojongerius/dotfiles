@@ -12,10 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@2.0.0
-        with:
-          scandir: .
-          ignore_paths: zsh
+        run: find . -name '*.sh' -not -path './zsh/*' -print0 | xargs -0 shellcheck
 
   test:
     runs-on: macos-latest
