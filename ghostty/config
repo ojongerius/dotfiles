@@ -1,2 +1,4 @@
+font-family = "JetBrains Mono Nerd Font"
+font-size = 14
 theme = "iterm2 Solarized Light"
 focus-follows-mouse = true

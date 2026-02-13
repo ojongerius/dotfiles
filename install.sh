@@ -44,7 +44,7 @@ Options:
   --ghostty     Link Ghostty config to ~/.config/ghostty/
   --brew        Install Xcode, Homebrew, and packages from Brewfile
   --osx         Run macOS system tweaks (osx/osx.sh)
-  --oh-my-zsh   Install Oh-my-zsh
+  --fish        Set up Fish shell with Starship prompt
   --claude      Link Claude Code skills to ~/.claude/skills/
   --dry-run     Preview what would be done without making changes
   --help        Show this help message
@@ -98,17 +98,23 @@ do_osx() {
     bash "$REPO_DIR/osx/osx.sh"
 }
 
-do_oh_my_zsh() {
-    echo "Working on Oh-my-zsh.."
-    if [ -d "$HOME/.oh-my-zsh" ]; then
-        echo "INFO: Oh-my-zsh is already installed, skipping."
-        return
+do_fish() {
+    echo "Working on Fish shell setup.."
+    mkdir -p "$HOME/.config/fish"
+    _symlink "$(realpath "$REPO_DIR/fish/config.fish")" "$HOME/.config/fish/config.fish"
+    _symlink "$(realpath "$REPO_DIR/starship/starship.toml")" "$HOME/.config/starship.toml"
+    touch "$HOME/.extra.fish"
+
+    local fish_path
+    fish_path="$(command -v fish || true)"
+    if [ -n "$fish_path" ]; then
+        if ! grep -qx "$fish_path" /etc/shells; then
+            echo "$fish_path" | sudo tee -a /etc/shells
+        fi
+        if [ "$SHELL" != "$fish_path" ]; then
+            chsh -s "$fish_path"
+        fi
     fi
-    if $DRY_RUN; then
-        echo "DRY-RUN: Would install Oh-my-zsh"
-        return
-    fi
-    curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 }
 
 do_claude() {
@@ -138,7 +144,7 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
             --ghostty)   do_ghostty ;;
             --brew)      do_brew ;;
             --osx)       do_osx ;;
-            --oh-my-zsh) do_oh_my_zsh ;;
+            --fish)      do_fish ;;
             --claude)    do_claude ;;
             --help)      usage ;;
             *)           echo "Unknown option: $arg"; usage; exit 1 ;;
