@@ -41,27 +41,27 @@ def parse_args():
     return parser.parse_args()
 
 
-def __symlink(source, destination):
+def _symlink(source, destination):
     os.symlink(source, destination)
     print(f'INFO: Linked {source} to {destination}')
 
 
-def __backup(destination):
+def _backup(destination):
     shutil.move(destination, f'{destination}.orig')
     print(f'INFO: Created backup {destination}.orig')
 
 
-def __create_links(source, destination):
+def _create_links(source, destination):
     try:
-        __symlink(source, destination)
+        _symlink(source, destination)
     except OSError as e:
         if e.errno == errno.EEXIST:
             if os.path.islink(destination) and \
                     os.path.realpath(source) == os.path.realpath(destination):
                 print(f'INFO: Nothing to do here: {destination} LGTM.')
                 return False
-            __backup(destination)
-            __symlink(source, destination)
+            _backup(destination)
+            _symlink(source, destination)
         else:
             print(f'ERROR: failed symlinking: {e}')
 
@@ -69,7 +69,7 @@ def __create_links(source, destination):
 def proccess_dotfiles(dir):
     for file in os.listdir(dir):
         if fnmatch.fnmatch(file, '.*'):
-            __create_links(os.path.realpath(os.path.join(dir, file)), os.path.expanduser(f'~/{file}'))
+            _create_links(os.path.realpath(os.path.join(dir, file)), os.path.expanduser(f'~/{file}'))
 
 
 def install_brew():
@@ -108,7 +108,7 @@ def main():
         print('Working on Ghostty config..')
         ghostty_dir = os.path.expanduser('~/.config/ghostty')
         os.makedirs(ghostty_dir, exist_ok=True)
-        __create_links(os.path.realpath('ghostty/config'), os.path.join(ghostty_dir, 'config'))
+        _create_links(os.path.realpath('ghostty/config'), os.path.join(ghostty_dir, 'config'))
 
     if options.osx:
         print('Working on osx customisations..')
