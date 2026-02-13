@@ -3,6 +3,7 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DRY_RUN=false
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -10,6 +11,11 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 _symlink() {
     local source="$1" destination="$2"
+
+    if $DRY_RUN; then
+        echo "DRY-RUN: Would link $source -> $destination"
+        return
+    fi
 
     # Already linked correctly — nothing to do
     if [ -L "$destination" ] && [ "$(readlink "$destination")" = "$source" ]; then
@@ -19,8 +25,10 @@ _symlink() {
 
     # Back up existing file/symlink
     if [ -e "$destination" ] || [ -L "$destination" ]; then
-        mv "$destination" "${destination}.orig"
-        echo "INFO: Created backup ${destination}.orig"
+        local backup
+        backup="${destination}.orig.$(date +%Y%m%d%H%M%S)"
+        mv "$destination" "$backup"
+        echo "INFO: Created backup $backup"
     fi
 
     ln -s "$source" "$destination"
@@ -38,6 +46,7 @@ Options:
   --osx         Run macOS system tweaks (osx/osx.sh)
   --fish        Set up Fish shell with Starship prompt
   --claude      Link Claude Code skills to ~/.claude/skills/
+  --dry-run     Preview what would be done without making changes
   --help        Show this help message
 EOF
 }
@@ -67,6 +76,10 @@ do_ghostty() {
 
 do_brew() {
     echo "Working on Brew and programs.."
+    if $DRY_RUN; then
+        echo "DRY-RUN: Would install Xcode CLI tools, Homebrew, and packages from Brewfile"
+        return
+    fi
     if ! xcode-select -p &>/dev/null; then
         xcode-select --install
     fi
@@ -78,6 +91,10 @@ do_brew() {
 
 do_osx() {
     echo "Working on osx customisations.."
+    if $DRY_RUN; then
+        echo "DRY-RUN: Would run macOS system tweaks from osx/osx.sh"
+        return
+    fi
     bash "$REPO_DIR/osx/osx.sh"
 }
 
@@ -122,6 +139,7 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 
     for arg in "$@"; do
         case "$arg" in
+            --dry-run)   DRY_RUN=true ;;
             --dotfiles)  do_dotfiles ;;
             --ghostty)   do_ghostty ;;
             --brew)      do_brew ;;
