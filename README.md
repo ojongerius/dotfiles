@@ -40,6 +40,18 @@ Each flag can be run independently or combined. Add `--dry-run` to preview chang
 
 Existing files are backed up with a `.orig` suffix before being replaced.
 
+## Modern CLI replacements
+
+Installed via Brewfile — use these instead of the defaults:
+
+| Use | Instead of |
+|-----|------------|
+| `eza` | `ls` |
+| `bat` | `cat` |
+| `rg` | `grep` |
+| `fd` | `find` |
+| `delta` | `diff` (auto-used as git pager) |
+
 ## Customization
 
 These files are sourced/included automatically but kept out of version control:
