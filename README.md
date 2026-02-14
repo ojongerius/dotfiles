@@ -1,61 +1,55 @@
 # Otto's dotfiles
 
-Collection of macOS dotfiles, programs and settings I use.
+Personal macOS dotfiles managing configs for Fish, Starship, Git, Tmux, Ghostty, and more.
 
-If you are looking for something that tries to work for everybody, you should probably look at larger projects listed at https://dotfiles.github.io
+## What's included
 
-## Installation
-Running _./install.sh_ could:
+| Tool | Config | Purpose |
+|------|--------|---------|
+| [Fish](https://fishshell.com/) | `fish/config.fish` | Shell |
+| [Starship](https://starship.rs/) | `starship/starship.toml` | Prompt with Nerd Font icons |
+| [Ghostty](https://ghostty.org/) | `ghostty/config` | Terminal |
+| Git | `git/.gitconfig` | 50+ aliases and GitHub shortcuts |
+| Tmux | `tmux/.tmux.conf` | Terminal multiplexer (`C-a` prefix) |
+| [Homebrew](https://brew.sh/) | `brew/Brewfile` | Package management |
+| macOS | `osx/osx.sh` | System defaults tweaks |
+| [Claude Code](https://claude.ai/code) | `claude/skills/` | AI assistant skills |
 
-* Install xcode, Homebrew and programs listed in _brew/Brewfile_.
-* Set up Fish shell with Starship prompt.
-* Link Ghostty terminal config.
-* Link Claude Code skills.
-* Run macOS tweaks.
+## Quick start
 
 ```bash
->./install.sh
-Usage: install.sh [OPTIONS]
-
-Options:
-  --dotfiles    Symlink all dotfiles to ~/
-  --ghostty     Link Ghostty config to ~/.config/ghostty/
-  --brew        Install Xcode, Homebrew, and packages from Brewfile
-  --osx         Run macOS system tweaks (osx/osx.sh)
-  --fish        Set up Fish shell with Starship prompt
-  --claude      Link Claude Code skills to ~/.claude/skills/
-  --dry-run     Preview what would be done without making changes
-  --help        Show this help message
+git clone https://github.com/ojongerius/dotfiles.git
+cd dotfiles
+./install.sh --dotfiles --fish --ghostty --brew --osx --claude
 ```
 
-## Dotfiles
+## Install options
 
-Create symlinks to these dotfiles by running _install.sh_. Existing files will be renamed with _.orig_ as suffix.
+Each flag can be run independently or combined. Add `--dry-run` to preview changes.
 
-## macOS
+```
+--dotfiles    Symlink all dotfiles to ~/
+--ghostty     Link Ghostty config to ~/.config/ghostty/
+--brew        Install Xcode, Homebrew, and packages from Brewfile
+--osx         Run macOS system tweaks (osx/osx.sh)
+--fish        Set up Fish shell with Starship prompt
+--claude      Link Claude Code skills to ~/.claude/skills/
+--dry-run     Preview what would be done without making changes
+--help        Show help message
+```
 
-Run a whole bunch of macOS tweaks. Taken from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles) with some adjustments.
+Existing files are backed up with a `.orig` suffix before being replaced.
 
-## Brew
+## Customization
 
-Install xcode, Brew, add taps and Casks. See _brew/Brewfile_ for the list of programs.
+These files are sourced/included automatically but kept out of version control:
 
-## Claude Code
+- **`~/.extra.fish`** — private or machine-specific Fish config (sourced by `config.fish`)
+- **`~/gitconfig/config`** — local Git overrides (included by `.gitconfig`)
+- **`~/.tmux.conf.user`** — local Tmux overrides (sourced by `.tmux.conf`)
 
-Link Claude Code skills from _claude/skills/_ to _~/.claude/skills/_.
+## Thanks
 
-## Fish + Starship
-
-Set up [Fish shell](https://fishshell.com/) with [Starship](https://starship.rs/) prompt. Uses JetBrains Mono Nerd Font for icons. Config files are in _fish/config.fish_ and _starship/starship.toml_.
-
-## Thanks!
-
-*  [Mathias Bynens](https://mathiasbynens.be/) and his fantastic [dotfiles](https://github.com/mathiasbynens/dotfiles).
-*  [Yan Pritzker](http://yanpritzker.com/) and his amazing [dotfiles](https://github.com/skwp/dotfiles).
-*  [Zach Holman](http://zachholman.com/) and his inspiring [dotfiles](https://github.com/holman/dotfiles)
-
-## Extras
-
-Another nice idea from [@mathiasbynens](https://github.com/mathiasbynens/dotfiles):
-Put things that do not belong in a public repository in a _~/.extra.fish_ and let
-_fish/config.fish_ source it for you.
+- [Mathias Bynens](https://mathiasbynens.be/) and his [dotfiles](https://github.com/mathiasbynens/dotfiles)
+- [Yan Pritzker](http://yanpritzker.com/) and his [dotfiles](https://github.com/skwp/dotfiles)
+- [Zach Holman](http://zachholman.com/) and his [dotfiles](https://github.com/holman/dotfiles)
