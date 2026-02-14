@@ -1,4 +1,4 @@
-brew 'autojump'
+brew 'zoxide'
 brew 'bats-core'
 brew 'coreutils'
 brew 'fish'

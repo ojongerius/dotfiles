@@ -4,9 +4,9 @@ set -gx COPYFILE_DISABLE 1
 # Brew
 fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
 
-# Autojump
-if test -f (brew --prefix)/share/autojump/autojump.fish
-    source (brew --prefix)/share/autojump/autojump.fish
+# Zoxide
+if type -q zoxide
+    zoxide init fish | source
 end
 
 # Show us a fortune
