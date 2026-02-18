@@ -102,6 +102,7 @@ do_fish() {
     echo "Working on Fish shell setup.."
     mkdir -p "$HOME/.config/fish"
     _symlink "$(realpath "$REPO_DIR/fish/config.fish")" "$HOME/.config/fish/config.fish"
+    _symlink "$(realpath "$REPO_DIR/fish/functions")" "$HOME/.config/fish/functions"
     _symlink "$(realpath "$REPO_DIR/starship/starship.toml")" "$HOME/.config/starship.toml"
     touch "$HOME/.extra.fish"
 

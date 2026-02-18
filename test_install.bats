@@ -92,14 +92,15 @@ setup() {
 
 # --- do_fish tests ---
 
-@test "do_fish symlinks fish config and starship config" {
+@test "do_fish symlinks fish config, functions, and starship config" {
     local fake_home="$TEST_DIR/home"
     mkdir -p "$fake_home/.config"
 
     local repo="$TEST_DIR/repo"
-    mkdir -p "$repo/fish" "$repo/starship"
+    mkdir -p "$repo/fish/functions" "$repo/starship"
     echo "fish cfg" > "$repo/fish/config.fish"
     echo "starship cfg" > "$repo/starship/starship.toml"
+    echo "function test; end" > "$repo/fish/functions/test.fish"
 
     HOME="$fake_home"
     REPO_DIR="$repo"
@@ -111,6 +112,7 @@ setup() {
     do_fish
 
     [ -L "$fake_home/.config/fish/config.fish" ]
+    [ -L "$fake_home/.config/fish/functions" ]
     [ -L "$fake_home/.config/starship.toml" ]
     [ -f "$fake_home/.extra.fish" ]
 }
