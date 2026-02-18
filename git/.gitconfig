@@ -134,3 +134,6 @@
 [include]
 
     path = ~/gitconfig/config
+[user]
+	email = otto@tempo.co.nz
+	name = Otto Jongerius
