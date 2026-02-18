@@ -10,7 +10,7 @@ function worktree_clone --description "Clone a repo as a bare worktree setup"
     if test (count $argv) -ge 2
         set -l dir_name $argv[2]
     else
-        set -l dir_name (string replace -r '\.git$' '' (basename $repo_url))
+        set -l dir_name (string replace -r '.*[:/]' '' $repo_url | string replace -r '\.git$' '')
     end
 
     if test -d $dir_name
