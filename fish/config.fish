@@ -17,6 +17,9 @@ end
 # Starship prompt
 starship init fish | source
 
+# Aliases
+alias webstorm "open -a /Users/ottojongerius/Applications/WebStorm.app"
+
 # Extra settings not in this repository
 if test -f ~/.extra.fish
     source ~/.extra.fish
