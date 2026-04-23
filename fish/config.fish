@@ -24,3 +24,6 @@ alias webstorm "open -a /Users/ottojongerius/Applications/WebStorm.app"
 if test -f ~/.extra.fish
     source ~/.extra.fish
 end
+
+alias assume="source (brew --prefix)/bin/assume.fish"
+fnm env --use-on-cd --shell fish | source
